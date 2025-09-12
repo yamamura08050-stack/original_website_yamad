@@ -12,7 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -74,6 +74,10 @@
                 </div>
             </div>
         </nav>
+        <div>
+            <h1>hello
+            </h1>
+        </div>
 
         <main class="py-4">
             @yield('content')
