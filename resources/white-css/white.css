@@ -1,0 +1,951 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* bodyの背景色と文字色を反転 */
+body {
+    background-color: #f0f0f0;
+    /* 白系の背景 */
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-container {
+    flex: 1;
+    padding-bottom: 60px;
+}
+
+.dash-section,
+.weight-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.weight-section {
+    display: flex;
+    flex: 1;
+    height: 90%;
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+}
+
+.settings-section {
+    display: flex;
+    flex-direction: column;
+}
+
+/* navbarの背景色と影の色を調整 */
+.navbar {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    background-color: #ffffff;
+    /* 白の背景 */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+    /* リンクの文字色を黒系に */
+}
+
+#menu-btn {
+    font-size: 20px;
+    background-color: #ffffff;
+    /* 白の背景 */
+}
+
+.menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.navbar ul li {
+    flex: 1;
+    text-align: center;
+}
+
+/* ナビゲーションボタンの背景色と文字色を調整 */
+.navbar ul li button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 60px;
+    width: 100%;
+    background-color: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555555;
+    /* グレー系の文字 */
+    transition: 0.3s;
+}
+
+.navbar ul li button:hover {
+    color: #000000;
+    /* ホバー文字黒 */
+    background-color: #e0e0e0;
+    /* ホバー背景を少し濃いグレーに */
+}
+
+.navbar ul li button .icon {
+    font-size: 20px;
+}
+
+.navbar ul li button .text {
+    font-size: 12px;
+}
+
+.navbar ul li button span i {
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.navbar ul li button:active span i {
+    transform: scale(0.85);
+}
+
+/* dash-imgはFont Awesomeを使用しているのであれば不要 */
+/* .dash-img {
+    filter: invert(40%) sepia(80%) saturate(2000%) hue-rotate(190deg);
+    width: 20px;
+    height: 20px;
+    margin: 0;
+} */
+
+.dash-content {
+    display: flex;
+    flex: 1.6;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+    padding: 10px;
+    order: 3;
+}
+
+/* TDEE, weight-gain, weight-loss ボックスの背景色と影の色を調整 */
+.TDEE,
+.weight-gain,
+.weight-loss {
+    display: flex;
+    flex: 1;
+    aspect-ratio: auto;
+    max-width: 95%;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    /* 白の背景 */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+.weight-gain,
+.weight-loss {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* mild-gainなどの小ボックスの背景色とボーダーを調整 */
+.mild-gain,
+.gain,
+.fast-gain,
+.mild-loss,
+.loss,
+.extreme-loss {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #dddddd;
+    /* 薄いグレーのボーダー */
+    margin-bottom: 5px;
+    background-color: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+}
+
+.mild-gain-left,
+.gain-left,
+.fast-gain-left,
+.mild-loss-left,
+.loss-left,
+.extreme-loss-left {
+    flex: 2;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mild-weight-gain,
+.weightgain,
+.fast-weight-gain,
+.mild-weight-loss,
+.weightloss,
+.extreme-weight-loss {
+    font-weight: bold;
+    font-size: 14px;
+    color: #777777;
+    /* 暗めのグレー文字 */
+}
+
+.mild-ex {
+    font-size: 12px;
+    color: #777777;
+    /* 暗めのグレー文字 */
+}
+
+/* mild-gain-calなどの背景色と文字色を調整 */
+.mild-gain-cal,
+.gain-cal,
+.fast-gain-cal,
+.mild-loss-cal,
+.loss-cal,
+.extreme-loss-cal {
+    flex: 1;
+    background: #e9e9e9;
+    /* 薄いグレーの背景 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.mild-gain-cal strong,
+.gain-cal strong,
+.fast-gain-cal strong,
+.mild-loss-cal strong,
+.loss-cal strong,
+.extreme-loss-cal strong {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3498db;
+    /* 水色はそのまま */
+}
+
+.mild-gain-cal span,
+.gain-cal span,
+.fast-gain-cal span,
+.mild-loss-cal span,
+.loss-cal span,
+.extreme-loss-cal span {
+    font-size: 12px;
+    color: #777777;
+    /* 暗めのグレー文字 */
+}
+
+#TDEE-chart {
+    width: 90% !important;
+    height: auto !important;
+}
+
+/* data-inputの背景色と影を調整 */
+.data-input {
+    flex: 1;
+    margin: 10px auto;
+    width: 95%;
+    height: auto;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    /* 白の背景 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    color: #333333;
+    /* 黒系の文字 */
+    order: 1;
+}
+
+.underTDEE {
+    border: none;
+    border-top: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+    margin: 13px 0;
+}
+
+/* paramaterの背景色と影を調整 */
+.paramater {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.05);
+    /* 非常に薄い影 */
+}
+
+.upper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lower {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.lower>button,
+#pfc-button {
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* calcボタンとpfc-buttonの色は水色で据え置き */
+.calc,
+#pfc-button {
+    background-color: #3498db;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.calc:active,
+#pfc-button:active {
+    transform: scale(0.95);
+}
+
+/* clearボタンの色を調整 */
+.clear {
+    transition: 1s;
+    background-color: #aaaaaa;
+    /* グレー */
+    color: white;
+}
+
+.clear:hover {
+    background-color: #999999;
+    /* 少し濃いグレー */
+}
+
+.calc:hover,
+#pfc-button:hover {
+    background-color: #2980b9;
+}
+
+/* resultボックスの背景色と影を調整 */
+.result {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    height: auto;
+    flex: 1;
+    border-radius: 13px;
+    background-color: #ffffff;
+    /* 白の背景 */
+    margin-top: 15px;
+    order: 2;
+}
+
+.right,
+.left {
+    text-align: center;
+    flex: 1;
+    line-height: normal;
+    padding: 10px 0;
+}
+
+#TDEE-val,
+#BMR-val {
+    font-size: 30px;
+    width: auto;
+    height: auto;
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+.left {
+    flex: 1;
+}
+
+.pfc-hr {
+    border: none;
+    border-top: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+    margin: 13px 0;
+}
+
+/* pfc-dataボックスの背景色と影を調整 */
+.pfc-data {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    height: auto;
+    background-color: #ffffff;
+    /* 白の背景 */
+    order: 4;
+}
+
+.pfc-data-upper,
+.pfc-data-lower {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+/* PFC入力フィールドとボタンの背景色と文字色を調整 */
+#fat-val,
+#protein-val,
+#carb-val {
+    width: 100%;
+    height: 30px;
+    background-color: #e9e9e9;
+    /* 薄いグレーの背景 */
+    color: #333333;
+    /* 黒系の文字 */
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+}
+
+#pfc-button {
+    background-color: #3498db;
+    /* 水色で据え置き */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.protein,
+.fat,
+.carb,
+.pfc-ratio {
+    flex: 1;
+    text-align: center;
+}
+
+/* ホバー効果の色を調整 */
+.paramater,
+.data-input,
+.pfc-data,
+.result,
+.weight-input,
+.weight-history,
+.weight-right,
+.weight-input,
+.TDEE,
+.pfc,
+.weight-loss,
+.weight-gain {
+    transition: all 0.3s ease;
+}
+
+.paramater:hover,
+.data-input:hover,
+.pfc-data:hover,
+.result:hover,
+.TDEE:hover,
+.pfc:hover,
+.weight-input:hover,
+.weight-history:hover,
+.weight-right:hover,
+.weight-loss:hover,
+.weight-gain:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* 薄い影 */
+    cursor: pointer;
+}
+
+/* weight-sectionの背景色と文字色を調整 */
+.weight-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: #f0f0f0;
+    /* 白系の背景 */
+    height: auto;
+    order: 3;
+}
+
+.weight-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 0;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+/* weight-inputの背景色と影を調整 */
+.weight-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 95%;
+    min-height: 28vh;
+    gap: 20px;
+    background-color: #ffffff;
+    /* 白の背景 */
+}
+
+.weight-input>h3,
+.weight-history>h3 {
+    text-align: center;
+    margin-top: 5px;
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 6px;
+    margin: 0 auto;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #3498db;
+    /* 水色はそのまま */
+}
+
+/* 日付と体重入力フィールドの背景色とボーダーを調整 */
+#daily-date,
+#daily-weight {
+    background-color: #e9e9e9;
+    /* 薄いグレーの背景 */
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+/* save-weightボタンの色は水色で据え置き */
+#save-weight {
+    width: 100%;
+    height: 30px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    margin-bottom: 15px;
+    /* 既存のスタイルを維持 */
+    margin-top: 15px;
+    /* 既存のスタイルを維持 */
+    border: none;
+    /* 既存のスタイルを維持 */
+    background-color: #3498db;
+    /* 水色 */
+    color: white;
+    /* 白文字 */
+    transition: 1s;
+    /* 既存のスタイルを維持 */
+}
+
+#save-weight:hover {
+    background-color: #2980b9;
+    border-radius: 10px;
+}
+
+#save-weight:active {
+    transform: scale(0.8);
+}
+
+/* weight-historyの背景色とボーダーを調整 */
+.weight-history {
+    flex: 1.5;
+    margin: 10px auto;
+    width: 95%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #ffffff;
+    /* 白の背景 */
+}
+
+.weight-edit {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-left: 37px;
+}
+
+.weight-history>h3 {
+    margin-bottom: 10px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: normal;
+    padding: 5px;
+}
+
+/* history-itemの背景色とボーダーを調整 */
+.history-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #dddddd;
+    /* 薄いグレーのボーダー */
+    border-radius: 5px;
+    padding: 7px 9px;
+    background-color: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
+    /* 薄い影 */
+    gap: 10px;
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+/* edit-btnの色は水色で据え置き */
+#edit-btn {
+    font-size: 12px;
+    padding: 2px 6px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+#edit-btn:active {
+    transform: scale(0.8);
+}
+
+.delete-btn {
+    padding: 0 2px;
+    margin-left: 4px;
+}
+
+/* weight-rightの背景色と影を調整 */
+.weight-right {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    margin: 10px auto;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    background-color: #ffffff;
+    /* 白の背景 */
+    overflow: hidden;
+    min-height: 70vh;
+}
+
+.history-table>tr {
+    border: 1px solid #dddddd;
+    /* 薄いグレーのボーダー */
+}
+
+.settings-section {
+    margin-left: 0;
+    padding: 10px;
+}
+
+/* settingボックスの背景色とボーダーを調整 */
+.setting {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    padding: 20px;
+    gap: 10px;
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+    width: 95%;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    /* 白の背景 */
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+.setting label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+}
+
+/* 共通ボックスの背景色と影を調整 */
+.TDEE,
+.weight-loss,
+.weight-gain,
+.paramater,
+.data-input,
+.weight-history,
+.weight-input {
+    background: #ffffff;
+    /* 白の背景 */
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+    color: #333333;
+    /* 黒系の文字 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+    transition: all 0.3s ease;
+}
+
+/* 共通ボックスのホバー効果の背景色と影を調整 */
+.TDEE:hover,
+.weight-loss:hover,
+.weight-gain:hover,
+.paramater:hover,
+.data-input:hover,
+.pfc-box:hover,
+.weight-history:hover,
+.weight-input:hover {
+    background: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* 薄い影 */
+    cursor: pointer;
+}
+
+/* 小ボックスの背景色とボーダーを調整 */
+.mild-gain,
+.gain,
+.fast-gain,
+.mild-loss,
+.loss,
+.extreme-loss {
+    background: #f8f8f8;
+    /* 非常に薄いグレーの背景 */
+    border: 1px solid #dddddd;
+    /* 薄いグレーのボーダー */
+    color: #333333;
+    /* 黒系の文字 */
+    transition: all 0.3s ease;
+}
+
+/* 小ボックスのホバー効果の背景色と影を調整 */
+.mild-gain:hover,
+.gain:hover,
+.fast-gain:hover,
+.mild-loss:hover,
+.loss:hover,
+.extreme-loss:hover {
+    background: #e0e0e0;
+    /* 少し濃いグレーの背景 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+}
+
+/* ボタンの背景色とボーダーを水色に据え置き */
+button,
+.menu-btn {
+    background: #3498db;
+    color: white;
+    border: 1px solid #3498db;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* ボタンのホバー効果の色を調整 */
+button:hover,
+.menu-btn:hover {
+    background: #2980b9;
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    /* 薄い影 */
+}
+
+/* 入力系の背景色とボーダーを調整 */
+input,
+select {
+    background: #e9e9e9;
+    /* 薄いグレーの背景 */
+    color: #333333;
+    /* 黒系の文字 */
+    border: 1px solid #cccccc;
+    /* 薄いグレーのボーダー */
+}
+
+/* 見出しの色を調整 */
+h1,
+h2,
+h3,
+h4 {
+    color: #333333;
+    /* 黒系の文字 */
+}
+
+/* デスクトップ向けスタイルは、色関連のみ変更し、レイアウトは維持 */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        min-height: 100vh;
+    }
+
+    .main-container {
+        padding-bottom: 0;
+    }
+
+    .dash-section,
+    .weight-section {
+        flex-direction: row;
+    }
+
+    .navbar {
+        width: 13%;
+        height: 100vh;
+        position: static;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        /* 薄い影 */
+        display: block;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+
+    ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    ul>li>button {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: 30px;
+        font-size: 16px;
+        height: 45px;
+    }
+
+    /* dash-imgはFont Awesomeを使用しているのであれば不要 */
+    /* .dash-img {
+        width: 15px;
+        height: auto;
+        margin: 0 5px;
+    } */
+
+    .dash-content {
+        width: 80%;
+        margin-left: 20px;
+        padding: 0;
+    }
+
+    .TDEE,
+    .weight-gain,
+    .weight-loss {
+        max-width: 100%;
+    }
+
+    .data-input {
+        width: auto;
+        order: unset;
+    }
+
+    .upper,
+    .lower {
+        flex-direction: row;
+    }
+
+    .lower>button,
+    #pfc-button {
+        width: 200px;
+    }
+
+    .result {
+        flex-direction: row;
+        height: 15vh;
+        order: unset;
+    }
+
+    .right,
+    .left {
+        line-height: 50px;
+    }
+
+    .pfc-data-upper,
+    .pfc-data-lower {
+        flex-direction: row;
+    }
+
+    .weight-section {
+        flex-direction: row;
+        order: unset;
+    }
+
+    .weight-left {
+        margin-left: 20px;
+    }
+
+    .weight-input {
+        width: auto;
+    }
+
+    .history-item {
+        flex-direction: row;
+    }
+
+    .weight-right {
+        width: auto;
+    }
+
+    .settings-section {
+        margin-left: 30px;
+    }
+
+    .setting {
+        width: 40vw;
+    }
+}

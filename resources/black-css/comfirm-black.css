@@ -1,0 +1,73 @@
+/* 全体背景 */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* カード */
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+/* カードヘッダー */
+.card-header {
+    background-color: #292929;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* ラベル */
+label {
+    color: #cccccc;
+}
+
+/* 入力欄 */
+.form-control {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    background-color: #333;
+    border-color: #00bcd4;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.7);
+}
+
+/* エラーメッセージ */
+.invalid-feedback {
+    color: #ff6b6b;
+}
+
+/* ボタン */
+.btn-primary {
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0097a7;
+}
+
+/* Forgot Password リンク */
+.btn-link {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+    color: #4dd0e1;
+}
