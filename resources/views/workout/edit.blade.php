@@ -9,9 +9,12 @@
 <form method="POST" action="{{ route('workouts.update', $exercise['id']) }}">
     @csrf
     @method('PUT')
+<input type="hidden" name="train_date" value="{{ $date }}">
     
 <h2 style="text-align:center; margin-bottom:10px;">Edit Exercise</h2>
+<h4 style="display:flex; justify-content:center;">{{ $date }}</h4>
 <button id="back-btn" style="margin-left:5px; padding:3px;><a href="{{ route('workouts.index') }}">← Back</a></button><span style="margin-left:68px; font-size:1.2rem;"> "{{ $exercise->exercise_name}}"</span>
+
 
 <form>
     <div class="sets-container">

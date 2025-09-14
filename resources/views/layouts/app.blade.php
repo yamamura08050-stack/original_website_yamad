@@ -74,10 +74,6 @@
                 </div>
             </div>
         </nav>
-        <div>
-            <h1>good morning bench
-            </h1>
-        </div>
 
         <main class="py-4">
             @yield('content')

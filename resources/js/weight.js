@@ -131,11 +131,11 @@ $(document).on('click', '.delete-btn', function (e) {
                 $form.closest('.history-item').remove();
                 $('.delete-btn').hide();
             } else {
-                alert('削除に失敗しました');
+                alert('Failed to delete');
             }
         },
         error: function () {
-            alert('削除に失敗しました');
+            alert('Failed to delete');
         }
     });
 });
@@ -176,7 +176,7 @@ $('#weight-form').on('submit', function (e) {
         error: function (xhr) {
             console.log(xhr.status);
             console.log(xhr.responseText);
-            alert('保存に失敗しました');
+            alert('Failed to save');
         }
     });
 });

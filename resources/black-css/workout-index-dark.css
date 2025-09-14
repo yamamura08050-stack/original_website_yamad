@@ -30,6 +30,11 @@ h1{
 .outside-month {
     color: #ccc;
 }
+.date.selected {
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+}
 
 
 

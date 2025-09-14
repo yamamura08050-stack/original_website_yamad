@@ -118,8 +118,12 @@ class WorkoutController extends Controller
         // Bladeでセットごとに使えるようにログを配列化
         $logs = $exercise->logs()->orderBy('id', 'asc')->get();
 
-        return view('workout.edit', compact('exercise', 'logs'));
+        // train_date を $date として渡す
+        $date = $exercise->train_date;
+
+        return view('workout.edit', compact('exercise', 'logs', 'date'));
     }
+
 
     public function update(Request $request, $id)
     {
@@ -144,7 +148,6 @@ class WorkoutController extends Controller
                 ]);
             }
         }
-
         return redirect()->route('workouts.index')->with('success', '更新しました');
     }
 

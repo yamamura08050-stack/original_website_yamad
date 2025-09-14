@@ -17,15 +17,17 @@ use App\Http\Controllers\SettingsController;
 |
 */
 
-Route::get('/dash', function () {return view('dash');})->middleware('auth');
+Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::prefix('dash')->group(function(){
 
+    Route::get('/', function () {return view('dash');})->middleware('auth');
+    
+    Route::get('/', [SectionController::class, 'dash'])->name('dash');
+});
 
-
-Route::get('/dash', [SectionController::class,'dash']) -> name('dash');
 
 Route::get('/settings', [SectionController::class,'settings']) -> name('settings');
 
@@ -63,6 +65,4 @@ Route::prefix('settings')->group(function (){
 
 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

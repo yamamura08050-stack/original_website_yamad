@@ -1,20 +1,40 @@
-//カレンダーで選んだ日付をselectedDateに保存
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.date').forEach(el => {
+    const dates = document.querySelectorAll('.date');
+    const selectedInput = document.getElementById('selected-date');
+
+    // 今日の日付を取得（YYYY-MM-DD形式）
+    const today = new Date().toISOString().split('T')[0];
+
+    dates.forEach(el => {
+        // 初期表示で今日の日付を選択状態にする
+        if (el.dataset.date === today) {
+            el.classList.add('selected');
+            selectedInput.value = today;
+        }
+
+        // クリックイベント
         el.addEventListener('click', function () {
-            let selectedDate = this.dataset.date;
-            document.getElementById('selected-date').value = selectedDate;
-            console.log("選択した日付:", selectedDate);
+            // まず全ての.selectedクラスを外す
+            dates.forEach(d => d.classList.remove('selected'));
+
+            // クリックした要素に.selectedクラスを付ける
+            this.classList.add('selected');
+
+            // hidden input に日付を保存
+            selectedInput.value = this.dataset.date;
+
+            console.log("選択した日付:", this.dataset.date);
         });
     });
 });
+
 
 document.getElementById('add-exercise-btn').addEventListener('click', function () {
     const selectedDate = document.getElementById('selected-date').value;
     if (selectedDate) {
         window.location.href = '/workouts/create?date=' + selectedDate;
     } else {
-        alert("日付を選んでください");
+        alert("Select a date");
     }
 });
 

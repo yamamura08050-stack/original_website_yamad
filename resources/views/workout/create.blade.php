@@ -13,7 +13,7 @@
     <button id="back-btn" style="padding: 3px; margin-left:8px;">
         <a href="{{ route('workouts.index') }}" style="text-decoration: none; ">← Back</a>
     </button>
-
+    <h4>{{ $date }}</h4>
     <button type="button" id="add-exercise-btn" style="margin-left: auto; margin-right:8px">＋ Add Exercise</button>
 </div>
 
@@ -55,6 +55,8 @@
 <script>
     const exercises = @json($exercises); // $exercisesをJS配列に変換
 </script>
+
+
 
 @push('scripts')
     @vite('resources/js/exercise-form.js')
